@@ -175,15 +175,30 @@ export default function Home() {
               </div>
             </Link>
 
+            {/* Live tool 2 */}
+            <Link
+              href="/tools/protein-per-dollar-calculator"
+              className="hover-lift group relative overflow-hidden rounded-2xl border-2 border-green-500/30 bg-gradient-to-b from-green-500/10 to-zinc-900 p-6"
+            >
+              <div className="absolute top-3 right-3 rounded-full bg-green-500 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-950">
+                Live
+              </div>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/20 bg-yellow-500/10">
+                <DollarSign className="h-6 w-6 text-yellow-400" />
+              </div>
+              <h3 className="mb-1 font-heading text-lg font-bold uppercase">
+                Protein Per Dollar
+              </h3>
+              <p className="text-sm text-zinc-400">
+                Compare protein sources by cost efficiency. Find the cheapest gains.
+              </p>
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-green-400 transition-colors group-hover:text-green-300">
+                Use now <ArrowRight className="h-3 w-3" />
+              </div>
+            </Link>
+
             {/* Upcoming tools */}
             {[
-              {
-                icon: DollarSign,
-                iconColor: "text-yellow-400",
-                iconBg: "border-yellow-500/20 bg-yellow-500/10",
-                title: "Protein Per Dollar",
-                desc: "Compare protein sources by cost efficiency. Find the cheapest gains.",
-              },
               {
                 icon: ShoppingCart,
                 iconColor: "text-blue-400",
@@ -410,9 +425,12 @@ export default function Home() {
                 >
                   Beef Macro Calculator
                 </Link>
-                <span className="text-zinc-700">
-                  Protein Per Dollar (soon)
-                </span>
+                <Link
+                  href="/tools/protein-per-dollar-calculator"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Protein Per Dollar
+                </Link>
                 <span className="text-zinc-700">
                   Meal Prep Cost (soon)
                 </span>
