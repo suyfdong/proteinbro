@@ -37,12 +37,26 @@ src/app/tools/protein-per-dollar-calculator/calculator.tsx — 排行榜组件
 src/components/newsletter-form.tsx — Newsletter 表单
 src/data/ground-beef.ts     — USDA 牛肉营养数据
 src/data/protein-sources.ts — 20+ 蛋白质源数据
+src/app/tools/meal-prep-cost-calculator/page.tsx      — 页面壳 + SEO + FAQ
+src/app/tools/meal-prep-cost-calculator/calculator.tsx — 计算器组件
+src/data/meal-prep-ingredients.ts — 26 种食材预设数据
+src/data/recipes.ts              — 10 个食谱数据
+src/components/recipe-card.tsx   — 食谱交互组件（macro 环形图 + 份量调节）
+src/app/recipes/page.tsx         — 食谱列表页
+src/app/recipes/[slug]/page.tsx  — 食谱详情页（动态路由 + Recipe Schema）
 ```
 
+### 2026-03-09 开发
+- [x] Meal Prep Cost Calculator 工具页（预设食材、价格编辑、per-meal 成本 + 宏量分析）
+- [x] 首页更新：Meal Prep Cost 工具卡片从 "Soon" 改为 "Live"
+- [x] 首页 footer 添加 Meal Prep Cost 链接
+- [x] 食谱页模板（交互式 macro 环形图、份量调节器、图标化步骤、成本仪表盘）
+- [x] Recipe Schema JSON-LD（每个食谱自动生成结构化数据）
+- [x] 10 篇核心食谱（数据驱动，动态路由 /recipes/[slug]）
+- [x] /recipes 列表页（按蛋白质排序 + 统计 summary）
+- [x] 首页更新：Recipes 区块从 "Coming Soon" 改为 "10 Recipes Live"，可点击
+
 ## 待办（Week 2-4）
-- [ ] Meal Prep Cost Calculator 工具页
-- [ ] 食谱页模板 + Recipe Schema JSON-LD
-- [ ] 10 篇核心食谱
 - [ ] Beehiiv newsletter 接入
 - [ ] HARO 关键词提醒 + Reddit 参与
 

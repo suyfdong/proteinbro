@@ -197,41 +197,45 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Upcoming tools */}
-            {[
-              {
-                icon: ShoppingCart,
-                iconColor: "text-blue-400",
-                iconBg: "border-blue-500/20 bg-blue-500/10",
-                title: "Meal Prep Cost",
-                desc: "Input your grocery list, get weekly and per-meal cost breakdowns.",
-              },
-              {
-                icon: CalendarDays,
-                iconColor: "text-purple-400",
-                iconBg: "border-purple-500/20 bg-purple-500/10",
-                title: "Weekly Kibble Generator",
-                desc: "Auto-generate a 5-meal rotation based on your protein goals and budget.",
-              },
-            ].map((tool) => (
-              <div
-                key={tool.title}
-                className="relative overflow-hidden rounded-2xl border-2 border-zinc-800 bg-zinc-900/50 p-6 opacity-70"
-              >
-                <div className="absolute top-3 right-3 rounded-full border border-zinc-700 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-500">
-                  Soon
-                </div>
-                <div
-                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl border ${tool.iconBg}`}
-                >
-                  <tool.icon className={`h-6 w-6 ${tool.iconColor}`} />
-                </div>
-                <h3 className="mb-1 font-heading text-lg font-bold uppercase text-zinc-300">
-                  {tool.title}
-                </h3>
-                <p className="text-sm text-zinc-500">{tool.desc}</p>
+            {/* Live tool 3 */}
+            <Link
+              href="/tools/meal-prep-cost-calculator"
+              className="hover-lift group relative overflow-hidden rounded-2xl border-2 border-green-500/30 bg-gradient-to-b from-green-500/10 to-zinc-900 p-6"
+            >
+              <div className="absolute top-3 right-3 rounded-full bg-green-500 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-950">
+                Live
               </div>
-            ))}
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10">
+                <ShoppingCart className="h-6 w-6 text-blue-400" />
+              </div>
+              <h3 className="mb-1 font-heading text-lg font-bold uppercase">
+                Meal Prep Cost
+              </h3>
+              <p className="text-sm text-zinc-400">
+                Build your grocery list, get weekly and per-meal cost breakdowns with macros.
+              </p>
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-green-400 transition-colors group-hover:text-green-300">
+                Use now <ArrowRight className="h-3 w-3" />
+              </div>
+            </Link>
+
+            {/* Upcoming tool */}
+            <div
+              className="relative overflow-hidden rounded-2xl border-2 border-zinc-800 bg-zinc-900/50 p-6 opacity-70"
+            >
+              <div className="absolute top-3 right-3 rounded-full border border-zinc-700 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-500">
+                Soon
+              </div>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10">
+                <CalendarDays className="h-6 w-6 text-purple-400" />
+              </div>
+              <h3 className="mb-1 font-heading text-lg font-bold uppercase text-zinc-300">
+                Weekly Kibble Generator
+              </h3>
+              <p className="text-sm text-zinc-500">
+                Auto-generate a 5-meal rotation based on your protein goals and budget.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -327,7 +331,7 @@ export default function Home() {
                 bg: "from-red-500/5",
                 title: "Recipes",
                 desc: "Ground beef, chicken, eggs, tuna. Every recipe has macros, cost, and cook time. No life stories.",
-                tag: "Coming Soon",
+                tag: "10 Recipes Live",
                 link: "/recipes",
               },
               {
@@ -350,23 +354,34 @@ export default function Home() {
                 tag: "Coming Soon",
                 link: "/nutrition",
               },
-            ].map((cat) => (
-              <div
-                key={cat.title}
-                className={`hover-lift rounded-2xl border-2 ${cat.borderColor} bg-gradient-to-b ${cat.bg} to-zinc-900/50 p-6 transition-colors`}
-              >
-                <cat.icon className={`mb-4 h-8 w-8 ${cat.iconColor}`} />
-                <h3 className="mb-2 font-heading text-xl font-bold uppercase">
-                  {cat.title}
-                </h3>
-                <p className="mb-4 text-sm leading-relaxed text-zinc-400">
-                  {cat.desc}
-                </p>
-                <span className="inline-block rounded-full border border-zinc-700 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
-                  {cat.tag}
-                </span>
-              </div>
-            ))}
+            ].map((cat) => {
+              const isLive = !cat.tag.includes("Coming Soon");
+              const inner = (
+                <>
+                  <cat.icon className={`mb-4 h-8 w-8 ${cat.iconColor}`} />
+                  <h3 className="mb-2 font-heading text-xl font-bold uppercase">
+                    {cat.title}
+                  </h3>
+                  <p className="mb-4 text-sm leading-relaxed text-zinc-400">
+                    {cat.desc}
+                  </p>
+                  <span className={`inline-block rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${isLive ? "border-green-500/30 text-green-400" : "border-zinc-700 text-zinc-500"}`}>
+                    {cat.tag}
+                  </span>
+                </>
+              );
+              const cls = `hover-lift rounded-2xl border-2 ${cat.borderColor} bg-gradient-to-b ${cat.bg} to-zinc-900/50 p-6 transition-colors`;
+
+              return isLive ? (
+                <Link key={cat.title} href={cat.link} className={cls}>
+                  {inner}
+                </Link>
+              ) : (
+                <div key={cat.title} className={cls}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -431,9 +446,12 @@ export default function Home() {
                 >
                   Protein Per Dollar
                 </Link>
-                <span className="text-zinc-700">
-                  Meal Prep Cost (soon)
-                </span>
+                <Link
+                  href="/tools/meal-prep-cost-calculator"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Meal Prep Cost
+                </Link>
               </div>
             </div>
 
@@ -449,7 +467,12 @@ export default function Home() {
                 >
                   What is Boy Kibble?
                 </Link>
-                <span className="text-zinc-700">Recipes (soon)</span>
+                <Link
+                  href="/recipes"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Recipes
+                </Link>
                 <span className="text-zinc-700">Meal Prep (soon)</span>
                 <span className="text-zinc-700">Nutrition (soon)</span>
               </div>
