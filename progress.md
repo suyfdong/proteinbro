@@ -1,65 +1,58 @@
 # Boy Kibble 项目进度
 
-## 当前状态：Week 1 完成，站点已上线
+## 当前状态：3 工具 + 10 食谱已上线
 
-- 域名：proteinbro.net（Cloudflare 购买）
-- 线上地址：https://proteinbro.net
+- 线上：https://proteinbro.net
 - GitHub：https://github.com/suyfdong/proteinbro
 - 部署：Cloudflare Pages，push main 自动部署
+- 总页面：18 个（首页 + Boy Kibble 文章 + 3 工具 + 食谱列表 + 10 食谱详情 + 404）
 
-## 已完成
+---
 
-### 规划阶段
-- [x] 项目定位与差异化确定
-- [x] Semrush 关键词验证（8M+/月）
-- [x] 竞品分析
-- [x] 完整计划编写（plan.md + keyword-analysis.md）
+## Day 1 — 2026-03-08
 
-### 2026-03-08 开发
-- [x] 域名购买 proteinbro.net + Cloudflare DNS + Pages 部署
-- [x] GitHub 仓库创建
-- [x] Next.js 16 + Tailwind v4 + TypeScript 项目搭建
-- [x] 首页（hero + 工具区 + Boy Kibble teaser + 分类 + newsletter + footer）
-- [x] Ground Beef Macro Calculator 工具页
-- [x] "What is Boy Kibble?" 权威长文（~2500 词，含食谱、营养表、成本分析、10 变体、FAQ）
-- [x] Protein Per Dollar Calculator 工具页（20+ 蛋白质源排行榜）
+- [x] 域名 + Cloudflare + GitHub + Next.js 16 项目搭建
+- [x] 首页（hero + 工具区 + Boy Kibble teaser + newsletter + footer）
+- [x] Ground Beef Macro Calculator
+- [x] "What is Boy Kibble?" 长文
+- [x] Protein Per Dollar Calculator（20+ 蛋白质源排行榜）
 
-### 改动文件清单
+## Day 2 — 2026-03-09
+
+- [x] Meal Prep Cost Calculator（26 种预设食材、价格编辑、per-meal 成本 + 宏量分析）
+- [x] 10 篇食谱（数据驱动、动态路由 + Recipe Schema JSON-LD）
+- [x] 食谱交互组件（macro 环形图、份量调节器、图标化步骤、成本仪表盘）
+- [x] /recipes 列表页（按蛋白质排序 + 统计卡片）
+- [x] 首页更新（3 工具全 Live、Recipes 可点击）
+
+**Day 2 改动文件：**
 ```
-src/app/layout.tsx          — 全局布局 + Google Fonts
-src/app/globals.css         — Tailwind v4 + 自定义动画/纹理
-src/app/page.tsx            — 首页
-src/app/boy-kibble/page.tsx — Boy Kibble 文章
-src/app/tools/ground-beef-macro-calculator/page.tsx      — 页面壳
-src/app/tools/ground-beef-macro-calculator/calculator.tsx — 计算器组件
-src/app/tools/protein-per-dollar-calculator/page.tsx      — 页面壳
-src/app/tools/protein-per-dollar-calculator/calculator.tsx — 排行榜组件
-src/components/newsletter-form.tsx — Newsletter 表单
-src/data/ground-beef.ts     — USDA 牛肉营养数据
-src/data/protein-sources.ts — 20+ 蛋白质源数据
-src/app/tools/meal-prep-cost-calculator/page.tsx      — 页面壳 + SEO + FAQ
-src/app/tools/meal-prep-cost-calculator/calculator.tsx — 计算器组件
-src/data/meal-prep-ingredients.ts — 26 种食材预设数据
-src/data/recipes.ts              — 10 个食谱数据
-src/components/recipe-card.tsx   — 食谱交互组件（macro 环形图 + 份量调节）
-src/app/recipes/page.tsx         — 食谱列表页
-src/app/recipes/[slug]/page.tsx  — 食谱详情页（动态路由 + Recipe Schema）
+新增：
+  src/app/tools/meal-prep-cost-calculator/page.tsx      — 工具页壳
+  src/app/tools/meal-prep-cost-calculator/calculator.tsx — 计算器组件
+  src/data/meal-prep-ingredients.ts  — 26 种食材数据
+  src/data/recipes.ts                — 10 个食谱数据
+  src/components/recipe-card.tsx     — 食谱交互组件
+  src/app/recipes/page.tsx           — 食谱列表页
+  src/app/recipes/[slug]/page.tsx    — 食谱详情页
+
+修改：
+  src/app/page.tsx  — 首页（工具卡片 Live + Recipes 链接）
+  progress.md
 ```
 
-### 2026-03-09 开发
-- [x] Meal Prep Cost Calculator 工具页（预设食材、价格编辑、per-meal 成本 + 宏量分析）
-- [x] 首页更新：Meal Prep Cost 工具卡片从 "Soon" 改为 "Live"
-- [x] 首页 footer 添加 Meal Prep Cost 链接
-- [x] 食谱页模板（交互式 macro 环形图、份量调节器、图标化步骤、成本仪表盘）
-- [x] Recipe Schema JSON-LD（每个食谱自动生成结构化数据）
-- [x] 10 篇核心食谱（数据驱动，动态路由 /recipes/[slug]）
-- [x] /recipes 列表页（按蛋白质排序 + 统计 summary）
-- [x] 首页更新：Recipes 区块从 "Coming Soon" 改为 "10 Recipes Live"，可点击
+---
 
-## 待办（Week 2-4）
-- [ ] Beehiiv newsletter 接入
+## 下一步
+
+- [ ] Beehiiv newsletter 接入（替换当前假表单）
 - [ ] HARO 关键词提醒 + Reddit 参与
+- [ ] 更多食谱（目标：月底 30+）
+- [ ] 程序化 SEO 页面（蛋白质 × 烹饪方法 × 配菜组合）
+- [ ] sitemap.ts 自动生成
+- [ ] GA4 / Cloudflare Analytics 接入
 
 ## 关键文件
+
 - 计划：`plan.md`
 - 关键词库：`keyword-analysis.md`
