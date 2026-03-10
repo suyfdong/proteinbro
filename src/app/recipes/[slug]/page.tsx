@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { RECIPES } from "@/data/recipes";
 import RecipeCard from "@/components/recipe-card";
 import { ArrowLeft } from "lucide-react";
@@ -27,6 +28,7 @@ export async function generateMetadata({
       description: recipe.tagline,
       type: "article",
       url: `https://proteinbro.net/recipes/${recipe.slug}`,
+      images: [`/recipes/${recipe.slug}.webp`],
     },
     alternates: {
       canonical: `/recipes/${recipe.slug}`,
@@ -119,6 +121,18 @@ export default async function RecipePage({
           <p className="text-lg text-zinc-400">{recipe.tagline}</p>
         </header>
 
+        {/* HERO IMAGE */}
+        <div className="mb-8 overflow-hidden rounded-2xl border-2 border-zinc-800">
+          <Image
+            src={`/recipes/${recipe.slug}.webp`}
+            alt={recipe.title}
+            width={800}
+            height={600}
+            className="h-auto w-full object-cover"
+            priority
+          />
+        </div>
+
         {/* RECIPE CARD */}
         <RecipeCard recipe={recipe} />
 
@@ -134,21 +148,32 @@ export default async function RecipePage({
                 <Link
                   key={r.slug}
                   href={`/recipes/${r.slug}`}
-                  className="group rounded-xl border-2 border-zinc-800 p-4 transition-colors hover:border-green-500/30 hover:bg-green-500/5"
+                  className="group overflow-hidden rounded-xl border-2 border-zinc-800 transition-colors hover:border-green-500/30 hover:bg-green-500/5"
                 >
-                  <h3 className="mb-1 font-heading text-lg font-bold uppercase text-zinc-200 group-hover:text-green-400">
-                    {r.title}
-                  </h3>
-                  <div className="flex items-center gap-3 text-xs text-zinc-500">
-                    <span className="font-mono font-bold text-green-400">
-                      {r.perServing.protein}g protein
-                    </span>
-                    <span>•</span>
-                    <span className="font-mono font-bold text-yellow-400">
-                      ${r.costPerServing.toFixed(2)}
-                    </span>
-                    <span>•</span>
-                    <span>{r.prepMinutes + r.cookMinutes} min</span>
+                  <div className="relative h-32 w-full">
+                    <Image
+                      src={`/recipes/${r.slug}.webp`}
+                      alt={r.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="mb-1 font-heading text-lg font-bold uppercase text-zinc-200 group-hover:text-green-400">
+                      {r.title}
+                    </h3>
+                    <div className="flex items-center gap-3 text-xs text-zinc-500">
+                      <span className="font-mono font-bold text-green-400">
+                        {r.perServing.protein}g protein
+                      </span>
+                      <span>•</span>
+                      <span className="font-mono font-bold text-yellow-400">
+                        ${r.costPerServing.toFixed(2)}
+                      </span>
+                      <span>•</span>
+                      <span>{r.prepMinutes + r.cookMinutes} min</span>
+                    </div>
                   </div>
                 </Link>
               ))}

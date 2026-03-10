@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { RECIPES } from "@/data/recipes";
 import {
   ArrowLeft,
@@ -123,9 +124,18 @@ export default function RecipesPage() {
               href={`/recipes/${recipe.slug}`}
               className="group flex items-center gap-4 rounded-2xl border-2 border-zinc-800 p-4 transition-all hover:border-green-500/30 hover:bg-green-500/[0.03] sm:p-5"
             >
-              {/* Rank */}
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-800 font-mono text-sm font-bold text-zinc-500">
-                {idx + 1}
+              {/* Thumbnail */}
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
+                <Image
+                  src={`/recipes/${recipe.slug}.webp`}
+                  alt={recipe.title}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+                <div className="absolute bottom-0 right-0 rounded-tl-lg bg-zinc-900/90 px-1.5 py-0.5 font-mono text-[10px] font-bold text-zinc-400">
+                  {idx + 1}
+                </div>
               </div>
 
               {/* Info */}
