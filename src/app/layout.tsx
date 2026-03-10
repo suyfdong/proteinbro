@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "No-BS high protein meal prep for gym bros. Macros-first recipes, cost calculators, and weekly meal plans. 40g+ protein, under $3/serving.",
   metadataBase: new URL("https://proteinbro.net"),
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

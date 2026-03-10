@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#09090B"/>
+  <!-- Left weight plates -->
+  <rect x="4" y="9" width="4" height="14" rx="1.5" fill="#22C55E"/>
+  <rect x="8" y="11" width="3" height="10" rx="1" fill="#16A34A"/>
+  <!-- Bar -->
+  <rect x="11" y="14" width="10" height="4" rx="1" fill="#A1A1AA"/>
+  <!-- Right weight plates -->
+  <rect x="21" y="11" width="3" height="10" rx="1" fill="#16A34A"/>
+  <rect x="24" y="9" width="4" height="14" rx="1.5" fill="#22C55E"/>
+</svg>
