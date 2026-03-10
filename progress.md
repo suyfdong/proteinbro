@@ -1,11 +1,11 @@
 # Boy Kibble 项目进度
 
-## 当前状态：3 工具 + 10 食谱 + Newsletter 已上线
+## 当前状态：3 工具 + 20 食谱 + Newsletter + SEO 基础设施已上线
 
 - 线上：https://proteinbro.net
 - GitHub：https://github.com/suyfdong/proteinbro
 - 部署：Cloudflare Pages，push main 自动部署
-- 总页面：18 个（首页 + Boy Kibble 文章 + 3 工具 + 食谱列表 + 10 食谱详情 + 404）
+- 总页面：28 个（首页 + Boy Kibble 文章 + 3 工具 + 食谱列表 + 20 食谱详情 + 404）
 
 ---
 
@@ -52,18 +52,27 @@
 - [x] robots.txt
 - [x] Google Search Console 验证 + 提交 sitemap
 - [x] GA4 接入（G-WYD72QPSFN）
+- [x] 新增 10 个食谱（总计 20 个，覆盖 turkey/eggs/shrimp/salmon/pork/yogurt/cottage cheese）
+- [x] AI 生成 20 张写实食物图片（Replicate FLUX 1.1 Pro，WebP 格式）
+- [x] 食谱详情页 + 列表页 + 相关推荐全部加图
+- [x] OG 图片（每个食谱社交分享有预览图）
 
 **Day 3 改动文件：**
 ```
 新增：
   public/favicon.svg                        — 哑铃图标
   public/google9b410392de760fe0.html        — Google 验证文件
-  src/app/sitemap.ts                        — 站点地图（16 页）
+  public/recipes/*.webp                     — 20 张 AI 食物图片
+  src/app/sitemap.ts                        — 站点地图（28 页）
   src/app/robots.ts                         — 爬虫指引
 
 修改：
   src/app/layout.tsx                        — favicon + GA4 脚本
+  src/app/recipes/page.tsx                  — 列表页加缩略图
+  src/app/recipes/[slug]/page.tsx           — 详情页加大图 + 相关推荐加图
+  src/data/recipes.ts                       — 新增 10 个食谱（共 20）
   src/components/newsletter-form.tsx        — Beehiiv 接入 + 验证 + 状态反馈
+  next.config.ts                            — 静态图片配置
   progress.md
 ```
 
@@ -71,10 +80,10 @@
 
 ## 下一步
 
-- [ ] HARO 关键词提醒 + Reddit 参与
 - [ ] 更多食谱（目标：月底 30+）
 - [ ] 程序化 SEO 页面（蛋白质 × 烹饪方法 × 配菜组合）
-- [ ] OG 图片（社交媒体分享预览）
+- [ ] Reddit 参与（r/MealPrepSunday、r/EatCheapAndHealthy）
+- [ ] 内部链接优化（食谱互推 + 工具页推荐食谱）
 - [ ] Cloudflare Analytics（备用流量统计）
 
 ## 关键文件
