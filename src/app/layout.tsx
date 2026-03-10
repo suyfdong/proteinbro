@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,6 +36,16 @@ export default function RootLayout({
       </head>
       <body className="noise-bg bg-zinc-950 font-body text-zinc-100 antialiased">
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WYD72QPSFN"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WYD72QPSFN');`}
+        </Script>
       </body>
     </html>
   );
