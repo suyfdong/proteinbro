@@ -5,11 +5,20 @@ import { Zap, Check, Loader2 } from "lucide-react";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      setError("Enter your email to subscribe");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    setError("");
 
     setStatus("loading");
 
@@ -26,14 +35,16 @@ export default function NewsletterForm() {
       className="flex flex-col gap-3 sm:flex-row"
       onSubmit={handleSubmit}
     >
-      <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        className="min-h-[48px] flex-1 rounded-xl border-2 border-zinc-700 bg-zinc-900 px-4 font-mono text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-600 focus:border-green-500"
-      />
+      <div className="flex-1">
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => { setEmail(e.target.value); setError(""); }}
+          placeholder="your@email.com"
+          className={`min-h-[48px] w-full rounded-xl border-2 ${error ? "border-red-500" : "border-zinc-700"} bg-zinc-900 px-4 font-mono text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-600 focus:border-green-500`}
+        />
+        {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
+      </div>
       <button
         type="submit"
         disabled={status === "loading"}
