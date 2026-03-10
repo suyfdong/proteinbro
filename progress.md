@@ -1,6 +1,6 @@
 # Boy Kibble 项目进度
 
-## 当前状态：3 工具 + 10 食谱已上线
+## 当前状态：3 工具 + 10 食谱 + Newsletter 已上线
 
 - 线上：https://proteinbro.net
 - GitHub：https://github.com/suyfdong/proteinbro
@@ -41,11 +41,24 @@
   progress.md
 ```
 
+## Day 3 — 2026-03-10
+
+- [x] Beehiiv newsletter 接入（注册 + 创建 Subscribe Form + 嵌入网站）
+- [x] 表单直接 POST 到 Beehiiv（隐藏 iframe，用户无需跳转）
+- [x] 自定义英文验证提示（替代浏览器中文默认提示）
+- [x] 提交状态反馈（loading → success "You're in!"）
+
+**Day 3 改动文件：**
+```
+修改：
+  src/components/newsletter-form.tsx — Beehiiv 接入 + 验证 + 状态反馈
+  progress.md
+```
+
 ---
 
 ## 下一步
 
-- [ ] Beehiiv newsletter 接入（替换当前假表单）
 - [ ] HARO 关键词提醒 + Reddit 参与
 - [ ] 更多食谱（目标：月底 30+）
 - [ ] 程序化 SEO 页面（蛋白质 × 烹饪方法 × 配菜组合）
