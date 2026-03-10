@@ -47,11 +47,23 @@
 - [x] 表单直接 POST 到 Beehiiv（隐藏 iframe，用户无需跳转）
 - [x] 自定义英文验证提示（替代浏览器中文默认提示）
 - [x] 提交状态反馈（loading → success "You're in!"）
+- [x] Favicon（哑铃图标，绿色 + 深色底）
+- [x] sitemap.xml 自动生成（16 个页面）
+- [x] robots.txt
+- [x] Google Search Console 验证 + 提交 sitemap
+- [x] GA4 接入（G-WYD72QPSFN）
 
 **Day 3 改动文件：**
 ```
+新增：
+  public/favicon.svg                        — 哑铃图标
+  public/google9b410392de760fe0.html        — Google 验证文件
+  src/app/sitemap.ts                        — 站点地图（16 页）
+  src/app/robots.ts                         — 爬虫指引
+
 修改：
-  src/components/newsletter-form.tsx — Beehiiv 接入 + 验证 + 状态反馈
+  src/app/layout.tsx                        — favicon + GA4 脚本
+  src/components/newsletter-form.tsx        — Beehiiv 接入 + 验证 + 状态反馈
   progress.md
 ```
 
@@ -62,8 +74,8 @@
 - [ ] HARO 关键词提醒 + Reddit 参与
 - [ ] 更多食谱（目标：月底 30+）
 - [ ] 程序化 SEO 页面（蛋白质 × 烹饪方法 × 配菜组合）
-- [ ] sitemap.ts 自动生成
-- [ ] GA4 / Cloudflare Analytics 接入
+- [ ] OG 图片（社交媒体分享预览）
+- [ ] Cloudflare Analytics（备用流量统计）
 
 ## 关键文件
 
