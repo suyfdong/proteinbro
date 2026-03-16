@@ -27,34 +27,45 @@ src/
 │   ├── page.tsx                   — 首页
 │   ├── boy-kibble/page.tsx        — Boy Kibble 趋势文章
 │   ├── recipes/
-│   │   ├── page.tsx               — 食谱列表页
-│   │   └── [slug]/page.tsx        — 食谱详情页（动态路由 + Recipe Schema）
-│   └── tools/
-│       ├── ground-beef-macro-calculator/   — 牛肉宏量计算器
-│       ├── protein-per-dollar-calculator/  — 蛋白质性价比排行
-│       └── meal-prep-cost-calculator/      — 备餐成本计算器
-│   ├── sitemap.ts                 — 自动站点地图
+│   │   ├── page.tsx               — 食谱列表页（含分类入口 + combo 列表）
+│   │   └── [slug]/page.tsx        — 统一详情页（食谱/combo/分类三合一路由）
+│   ├── meal-prep/
+│   │   ├── page.tsx               — Meal Prep Hub
+│   │   ├── weekly-plan/page.tsx   — 7 天周计划 + 购物清单
+│   │   ├── under-30-minutes/page.tsx — 快速备餐（按时间分桶）
+│   │   └── budget/page.tsx        — 预算排行（蛋白质/美元条形图）
+│   ├── tools/
+│   │   ├── ground-beef-macro-calculator/   — 牛肉宏量计算器
+│   │   ├── protein-per-dollar-calculator/  — 蛋白质性价比排行
+│   │   └── meal-prep-cost-calculator/      — 备餐成本计算器
+│   ├── sitemap.ts                 — 自动站点地图（99 URL）
 │   └── robots.ts                  — 爬虫指引
 ├── components/
 │   ├── newsletter-form.tsx        — Beehiiv Newsletter 表单
-│   └── recipe-card.tsx            — 食谱交互组件（macro 环形图 + 份量调节）
+│   ├── recipe-card.tsx            — 食谱交互组件（macro 环形图 + 份量调节）
+│   └── combo-card.tsx             — Combo 交互组件（评分条 + 换搭配链接）
 └── data/
     ├── ground-beef.ts             — USDA 牛肉营养数据
     ├── protein-sources.ts         — 20+ 蛋白质源数据
     ├── meal-prep-ingredients.ts   — 26 种备餐食材数据
-    └── recipes.ts                 — 20 个食谱数据
+    ├── recipes.ts                 — 30 个手写食谱数据
+    ├── combos.ts                  — 46 个程序化 Combo（蛋白质×方法×配菜）
+    └── categories.ts              — 9 个蛋白质分类定义
 
 public/
 ├── favicon.svg                    — 哑铃图标
-├── recipes/*.webp                 — 20 张 AI 生成食物图片（Replicate FLUX）
+├── recipes/*.webp                 — 76 张 AI 生成食物图片（Replicate FLUX）
 └── google*.html                   — Google Search Console 验证
 ```
 
 ## 关键约定
 
 - **每个工具页**：`page.tsx`（SEO metadata + FAQ Schema JSON-LD）+ `calculator.tsx`（"use client" 交互组件）
-- **食谱页**：数据驱动，所有食谱在 `src/data/recipes.ts`，通过 `generateStaticParams` 静态生成
-- **SEO**：每页有 metadata + canonical URL + openGraph；食谱页有 Recipe Schema JSON-LD + OG 图片
+- **食谱页**：数据驱动，`src/data/recipes.ts`，通过 `generateStaticParams` 静态生成
+- **Combo 页**：程序化生成，`src/data/combos.ts`，蛋白质×方法×配菜矩阵，HowTo + FAQPage Schema
+- **分类页**：9 个蛋白质分类 Hub，`src/data/categories.ts`，CollectionPage Schema
+- **`[slug]` 路由**：单一动态路由处理食谱、combo、分类三种内容（按优先级查找）
+- **SEO**：每页有 metadata + canonical URL + openGraph；食谱有 Recipe Schema，combo 有 HowTo + FAQ Schema
 - **Newsletter**：Beehiiv 接入（隐藏 iframe POST），publication ID: 4471e49d-5852-4780-816b-3c0a9c625521
 - **Analytics**：GA4（G-WYD72QPSFN）+ Google Search Console 已验证
 - **图片**：Replicate FLUX 1.1 Pro 生成，WebP 格式，存 `public/recipes/`
