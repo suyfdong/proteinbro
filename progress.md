@@ -1,11 +1,11 @@
 # Boy Kibble 项目进度
 
-## 当前状态：3 工具 + 20 食谱 + Newsletter + SEO 基础设施已上线
+## 当前状态：99 页（30 食谱 + 46 Combo + 9 分类 + 4 Meal Prep + 10 静态页）
 
 - 线上：https://proteinbro.net
 - GitHub：https://github.com/suyfdong/proteinbro
 - 部署：Cloudflare Pages，push main 自动部署
-- 总页面：28 个（首页 + Boy Kibble 文章 + 3 工具 + 食谱列表 + 20 食谱详情 + 404）
+- 总页面：99 个（30 食谱 + 46 Combo 程序化页 + 9 分类页 + 4 Meal Prep + 10 静态页）
 
 ---
 
@@ -76,15 +76,50 @@
   progress.md
 ```
 
+## Day 4 — 2026-03-16
+
+- [x] 46 个 Combo 程序化 SEO 页（蛋白质 × 烹饪方法 × 配菜，HowTo + FAQPage Schema）
+- [x] 9 个蛋白质分类页（Hub & Spoke，CollectionPage Schema）
+- [x] 新增 10 个食谱（#21-30，总计 30 个）+ AI 图片
+- [x] 内部链接优化（食谱列表加分类入口、详情页按标签推荐、工具页加食谱推荐）
+- [x] Meal Prep Hub（4 个新页面：主页 + 周计划 + 快速备餐 + 预算排行）
+- [x] 首页 Meal Prep 从 "Coming Soon" → "Live"
+- [x] Sitemap 更新（99 个 URL）
+
+**Day 4 改动文件：**
+```
+新增：
+  src/data/combos.ts                          — 46 个 Combo 数据 + 生成逻辑
+  src/data/categories.ts                      — 9 个分类定义 + 匹配函数
+  src/components/combo-card.tsx               — Combo 交互组件（评分条、宏量环、换搭配）
+  src/app/meal-prep/page.tsx                  — Meal Prep Hub
+  src/app/meal-prep/weekly-plan/page.tsx      — 7 天周计划 + 购物清单
+  src/app/meal-prep/under-30-minutes/page.tsx — 快速备餐（按时间分桶）
+  src/app/meal-prep/budget/page.tsx           — 预算排行（蛋白质/美元条形图）
+  public/recipes/*.webp                       — 56 张新 AI 食物图片（46 combo + 10 食谱）
+  scripts/generate-combo-images.py            — Combo 图片生成脚本
+  scripts/generate-3-missing.py               — 补充图片生成脚本
+
+修改：
+  src/app/recipes/[slug]/page.tsx  — 支持 combo/分类路由 + 标签匹配推荐 + 分类链接
+  src/app/recipes/page.tsx         — 分类快捷入口 + combo 列表
+  src/app/sitemap.ts               — 新增 combo/分类/meal-prep URL
+  src/app/page.tsx                 — Meal Prep Live + footer 链接
+  src/data/recipes.ts              — 新增 10 个食谱（共 30）
+  src/app/tools/ground-beef-macro-calculator/page.tsx   — 加牛肉食谱推荐
+  src/app/tools/protein-per-dollar-calculator/page.tsx  — 加分类入口
+  src/app/tools/meal-prep-cost-calculator/page.tsx      — 加备餐食谱推荐
+```
+
 ---
 
 ## 下一步
 
-- [ ] 更多食谱（目标：月底 30+）
-- [ ] 程序化 SEO 页面（蛋白质 × 烹饪方法 × 配菜组合）
+- [ ] Boy Kibble 子页面（original recipe、variations）
+- [ ] Nutrition Hub（/nutrition/：proteinmaxxing guide、cheapest sources、how much protein）
+- [ ] Gear 页（/gear/：air fryer、rice cooker、meal prep containers — Amazon affiliate）
+- [ ] Weekly Meal Generator 工具（SaaS 潜力）
 - [ ] Reddit 参与（r/MealPrepSunday、r/EatCheapAndHealthy）
-- [ ] 内部链接优化（食谱互推 + 工具页推荐食谱）
-- [ ] Cloudflare Analytics（备用流量统计）
 
 ## 关键文件
 
