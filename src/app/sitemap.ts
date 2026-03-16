@@ -1,4 +1,6 @@
 import { RECIPES } from "@/data/recipes";
+import { COMBOS } from "@/data/combos";
+import { CATEGORIES } from "@/data/categories";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -22,5 +24,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...recipePages];
+  const comboPages: MetadataRoute.Sitemap = COMBOS.map((combo) => ({
+    url: `${base}/recipes/${combo.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
+    url: `${base}/recipes/${cat.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...recipePages, ...comboPages, ...categoryPages];
 }
