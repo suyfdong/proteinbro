@@ -3,6 +3,9 @@ import time
 import os
 
 TOKEN = os.environ.get("REPLICATE_API_TOKEN", "")
+if not TOKEN:
+    print("Error: Set REPLICATE_API_TOKEN environment variable")
+    exit(1)
 OUT_DIR = "/Users/susu/idea/boykibble/public/recipes"
 BASE_STYLE = "Professional food photography, dramatic overhead flat lay shot, dark wood table background, masculine rustic plating, natural side lighting, shallow depth of field, 4k, hyper realistic, appetizing, no text, no watermark"
 
