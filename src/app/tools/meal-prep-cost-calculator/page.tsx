@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import MealPrepCostCalculator from "./calculator";
-import { ShoppingCart, ArrowLeft } from "lucide-react";
+import { ShoppingCart, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { RECIPES } from "@/data/recipes";
 
 export const metadata: Metadata = {
   title: "Meal Prep Cost Calculator - Weekly Grocery Budget Planner",
@@ -138,6 +139,41 @@ export default function MealPrepCostCalculatorPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* MEAL PREP RECIPES */}
+        <section className="mt-12 border-t border-zinc-800 pt-10">
+          <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
+            Best Meal Prep Recipes
+          </h2>
+          <div className="space-y-2">
+            {RECIPES.filter((r) =>
+              r.tags.some((t) => t.toLowerCase().includes("meal prep"))
+            )
+              .slice(0, 5)
+              .map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/recipes/${r.slug}`}
+                  className="group flex items-center justify-between rounded-lg border border-zinc-800 px-4 py-3 transition-colors hover:border-green-500/30 hover:bg-green-500/[0.03]"
+                >
+                  <span className="font-heading text-sm font-bold uppercase text-zinc-300 group-hover:text-green-400">
+                    {r.title}
+                  </span>
+                  <div className="flex items-center gap-3 text-xs">
+                    <span className="font-mono font-bold text-green-400">{r.perServing.protein}g</span>
+                    <span className="font-mono text-yellow-400">${r.costPerServing.toFixed(2)}</span>
+                    <ArrowRight className="h-3 w-3 text-zinc-700 group-hover:text-green-400" />
+                  </div>
+                </Link>
+              ))}
+          </div>
+          <Link
+            href="/recipes"
+            className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-green-400 hover:text-green-300"
+          >
+            View all recipes <ArrowRight className="h-3 w-3" />
+          </Link>
         </section>
 
         {/* FOOTER */}

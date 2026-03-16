@@ -341,7 +341,7 @@ export default function Home() {
                 bg: "from-blue-500/5",
                 title: "Meal Prep",
                 desc: "Sunday batch cooking guides. Weekly plans. Shopping lists. Spend 2 hours, eat all week.",
-                tag: "Coming Soon",
+                tag: "Live",
                 link: "/meal-prep",
               },
               {
@@ -473,7 +473,12 @@ export default function Home() {
                 >
                   Recipes
                 </Link>
-                <span className="text-zinc-700">Meal Prep (soon)</span>
+                <Link
+                  href="/meal-prep"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Meal Prep
+                </Link>
                 <span className="text-zinc-700">Nutrition (soon)</span>
               </div>
             </div>

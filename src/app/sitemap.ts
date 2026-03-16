@@ -15,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/ground-beef-macro-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/tools/protein-per-dollar-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/tools/meal-prep-cost-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/meal-prep`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/meal-prep/weekly-plan`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/meal-prep/under-30-minutes`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/meal-prep/budget`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
   ];
 
   const recipePages: MetadataRoute.Sitemap = RECIPES.map((recipe) => ({

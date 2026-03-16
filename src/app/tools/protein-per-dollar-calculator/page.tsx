@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import ProteinPerDollarCalculator from "./calculator";
-import { DollarSign, ArrowLeft } from "lucide-react";
+import { DollarSign, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { CATEGORIES, getCategoryContent } from "@/data/categories";
 
 export const metadata: Metadata = {
   title: "Protein Per Dollar Calculator - Find the Cheapest Protein Sources",
@@ -140,6 +141,41 @@ export default function ProteinPerDollarPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* BROWSE RECIPES BY PROTEIN */}
+        <section className="mt-12 border-t border-zinc-800 pt-10">
+          <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
+            Recipes by Protein Source
+          </h2>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {CATEGORIES.slice(0, 6).map((cat) => {
+              const { stats } = getCategoryContent(cat);
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/recipes/${cat.slug}`}
+                  className="group flex items-center gap-2 rounded-xl border border-zinc-800 p-3 transition-colors hover:border-green-500/30 hover:bg-green-500/[0.03]"
+                >
+                  <span className="text-xl">{cat.emoji}</span>
+                  <div>
+                    <div className="text-sm font-bold text-zinc-300 group-hover:text-green-400">
+                      {cat.name}
+                    </div>
+                    <div className="text-[10px] text-zinc-600">
+                      {stats.totalPages} recipes
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <Link
+            href="/recipes"
+            className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-green-400 hover:text-green-300"
+          >
+            View all recipes <ArrowRight className="h-3 w-3" />
+          </Link>
         </section>
 
         {/* FOOTER */}

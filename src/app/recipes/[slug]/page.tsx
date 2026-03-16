@@ -214,13 +214,18 @@ function RecipePageContent({ recipe }: { recipe: (typeof RECIPES)[number] }) {
         {/* RECIPE CARD */}
         <RecipeCard recipe={recipe} />
 
-        {/* RELATED RECIPES */}
+        {/* RELATED RECIPES — matched by shared tags */}
         <section className="mt-12 border-t border-zinc-800 pt-10">
           <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
             More Recipes
           </h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {RECIPES.filter((r) => r.slug !== recipe.slug)
+              .map((r) => ({
+                ...r,
+                _shared: r.tags.filter((t) => recipe.tags.includes(t)).length,
+              }))
+              .sort((a, b) => b._shared - a._shared)
               .slice(0, 4)
               .map((r) => (
                 <Link
@@ -257,6 +262,34 @@ function RecipePageContent({ recipe }: { recipe: (typeof RECIPES)[number] }) {
               ))}
           </div>
         </section>
+
+        {/* CATEGORY LINKS */}
+        {(() => {
+          const matchingCats = CATEGORIES.filter((cat) =>
+            cat.recipeTagMatch.some((tag) =>
+              recipe.tags.some((t) => t.toLowerCase().includes(tag.toLowerCase()))
+            )
+          );
+          if (matchingCats.length === 0) return null;
+          return (
+            <section className="mt-8">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                  Browse more:
+                </span>
+                {matchingCats.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    href={`/recipes/${cat.slug}`}
+                    className="flex items-center gap-1 rounded-full border border-zinc-800 px-3 py-1 text-xs font-bold text-zinc-400 transition-colors hover:border-green-500/30 hover:text-green-400"
+                  >
+                    <span>{cat.emoji}</span> {cat.name} Recipes
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* FOOTER */}
         <footer className="mt-12 border-t border-zinc-800 pt-6 text-center text-xs text-zinc-600">
@@ -420,6 +453,29 @@ function ComboPageContent({ combo }: { combo: (typeof COMBOS)[number] }) {
             </div>
           </section>
         )}
+
+        {/* CATEGORY LINK */}
+        {(() => {
+          const matchingCat = CATEGORIES.find((cat) =>
+            cat.comboProteinMatch.includes(combo.protein.id)
+          );
+          if (!matchingCat) return null;
+          return (
+            <section className="mt-8">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                  Browse more:
+                </span>
+                <Link
+                  href={`/recipes/${matchingCat.slug}`}
+                  className="flex items-center gap-1 rounded-full border border-zinc-800 px-3 py-1 text-xs font-bold text-zinc-400 transition-colors hover:border-green-500/30 hover:text-green-400"
+                >
+                  <span>{matchingCat.emoji}</span> All {matchingCat.name} Recipes
+                </Link>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* FOOTER */}
         <footer className="mt-12 border-t border-zinc-800 pt-6 text-center text-xs text-zinc-600">

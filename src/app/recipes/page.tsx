@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { RECIPES } from "@/data/recipes";
 import { COMBOS } from "@/data/combos";
+import { CATEGORIES, getCategoryContent } from "@/data/categories";
 import {
   ArrowLeft,
   ArrowRight,
@@ -123,6 +124,33 @@ export default function RecipesPage() {
           <div className="font-mono text-2xl font-black text-blue-400">
             {RECIPES.length + COMBOS.length}
           </div>
+        </div>
+      </div>
+
+      {/* BROWSE BY PROTEIN */}
+      <div className="mb-10">
+        <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-zinc-400">
+          Browse by Protein
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {CATEGORIES.map((cat) => {
+            const { stats } = getCategoryContent(cat);
+            return (
+              <Link
+                key={cat.slug}
+                href={`/recipes/${cat.slug}`}
+                className="group flex items-center gap-1.5 rounded-full border-2 border-zinc-800 px-3 py-1.5 text-sm transition-all hover:border-green-500/30 hover:bg-green-500/[0.03]"
+              >
+                <span>{cat.emoji}</span>
+                <span className="font-bold text-zinc-300 group-hover:text-green-400">
+                  {cat.name}
+                </span>
+                <span className="font-mono text-[10px] text-zinc-600">
+                  {stats.totalPages}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
