@@ -369,6 +369,12 @@ export default function BoyKibblePage() {
                 This is the canonical boy kibble recipe. No fancy techniques. If
                 you can brown meat and boil water, you&apos;re qualified.
               </p>
+              <Link
+                href="/boy-kibble/original-recipe"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-orange-400 hover:text-orange-300"
+              >
+                Full recipe with meal prep instructions & ratio guide <ArrowRight className="h-3 w-3" />
+              </Link>
 
               {/* Recipe card */}
               <div className="rounded-2xl border-2 border-zinc-700 bg-zinc-900 p-6">
@@ -596,6 +602,12 @@ export default function BoyKibblePage() {
                 are 10 variations that keep the spirit (cheap, easy, high
                 protein) while changing the flavor profile:
               </p>
+              <Link
+                href="/boy-kibble/variations"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-orange-400 hover:text-orange-300"
+              >
+                See all variations with full macros & comparison table <ArrowRight className="h-3 w-3" />
+              </Link>
 
               <div className="grid gap-3 sm:grid-cols-2">
                 {[

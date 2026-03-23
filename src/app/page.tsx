@@ -47,11 +47,14 @@ export default function Home() {
             <Link href="/tools/ground-beef-macro-calculator" className="transition-colors hover:text-green-400">
               Tools
             </Link>
-            <Link href="#categories" className="transition-colors hover:text-zinc-100">
+            <Link href="/recipes" className="transition-colors hover:text-zinc-100">
               Recipes
             </Link>
-            <Link href="#boy-kibble" className="transition-colors hover:text-zinc-100">
-              Boy Kibble
+            <Link href="/nutrition" className="transition-colors hover:text-zinc-100">
+              Nutrition
+            </Link>
+            <Link href="/gear" className="transition-colors hover:text-zinc-100">
+              Gear
             </Link>
             <Link href="#newsletter" className="transition-colors hover:text-zinc-100">
               Newsletter
@@ -351,7 +354,7 @@ export default function Home() {
                 bg: "from-green-500/5",
                 title: "Nutrition",
                 desc: "Proteinmaxxing guides. Cheapest protein sources ranked. How much protein you actually need.",
-                tag: "Coming Soon",
+                tag: "Live",
                 link: "/nutrition",
               },
             ].map((cat) => {
@@ -479,7 +482,18 @@ export default function Home() {
                 >
                   Meal Prep
                 </Link>
-                <span className="text-zinc-700">Nutrition (soon)</span>
+                <Link
+                  href="/nutrition"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Nutrition
+                </Link>
+                <Link
+                  href="/gear"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Gear
+                </Link>
               </div>
             </div>
 
