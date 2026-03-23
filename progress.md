@@ -1,11 +1,12 @@
 # Boy Kibble 项目进度
 
-## 当前状态：99 页（30 食谱 + 46 Combo + 9 分类 + 4 Meal Prep + 10 静态页）
+## 当前状态：184 页（30 食谱 + 120 Combo + 9 分类 + 4 Meal Prep + 4 Nutrition + 4 Gear + 3 Boy Kibble + 4 工具 + 6 静态页）
 
 - 线上：https://proteinbro.net
 - GitHub：https://github.com/suyfdong/proteinbro
 - 部署：Cloudflare Pages，push main 自动部署
-- 总页面：99 个（30 食谱 + 46 Combo 程序化页 + 9 分类页 + 4 Meal Prep + 10 静态页）
+- 总页面：184 个
+- 工具：4 个全部 Live（Beef Macro / Protein Per Dollar / Meal Prep Cost / Weekly Generator）
 
 ---
 
@@ -111,15 +112,73 @@
   src/app/tools/meal-prep-cost-calculator/page.tsx      — 加备餐食谱推荐
 ```
 
+## Day 5 — 2026-03-23
+
+- [x] Nutrition Hub（4 个新页面）
+  - /nutrition/ — Hub 主页（蛋白质速查排行 + 3 个指南入口）
+  - /nutrition/proteinmaxxing-guide/ — 完整指南（5 条规则、样本日 174g/$9.20、购物清单、Do/Don't）
+  - /nutrition/how-much-protein-per-day/ — 蛋白质需求（按目标分层表、体重速查表、分餐建议、myth debunk）
+  - /nutrition/cheapest-protein-sources/ — 20 种蛋白质源 g/$ 排行（价值分层、分类最佳、每日成本场景）
+- [x] Gear Hub（4 个新页面，Amazon affiliate 预留）
+  - /gear/ — Hub 主页（完整装备清单 ~$142）
+  - /gear/best-air-fryers/ — 4 款空气炸锅评测 + 烹饪时间表
+  - /gear/best-rice-cookers/ — 3 款电饭煲评测 + 米饭比例速查
+  - /gear/meal-prep-containers/ — 4 款容器评测 + 玻璃 vs 塑料对比
+- [x] Boy Kibble 子页面（2 个新页面）
+  - /boy-kibble/original-recipe/ — 完整食谱（步骤、比例表、meal prep 5 天指南、成本明细、Recipe Schema）
+  - /boy-kibble/variations/ — 10 种变体（Korean/Taco/Teriyaki 等，宏量对比表、5 天轮换方案）
+- [x] Weekly Kibble Generator 工具（/tools/weekly-meal-generator/）
+  - 蛋白质目标滑块（80-250g）+ 周预算滑块（$15-$100）
+  - 6 种蛋白质排除筛选
+  - 5 天轮换一键生成 + Lock/Re-roll 单日
+  - 蛋白质达标进度条 + 购物清单
+- [x] Combo 矩阵扩展（46 → 120 个程序化页面）
+  - 新增 74 个 combo（更多配菜组合：quinoa, brown rice, broccoli, pasta, mixed veggies）
+- [x] 首页 Hero 右侧 Protein Ticker 动态卡片
+  - 自动轮播 6 种蛋白质源（环形图 + 宏量条 + protein/$ 效率）
+  - 微浮动动画 + 鼠标悬停暂停 + 圆点导航
+- [x] 首页更新
+  - Nutrition "Coming Soon" → "Live"
+  - Weekly Generator "Soon" → "Live"（4 工具全部 Live）
+  - 导航栏新增 Nutrition + Gear
+  - Footer 新增 Nutrition + Gear + Weekly Generator 链接
+- [x] Sitemap 更新（184 个 URL）
+
+**Day 5 改动文件：**
+```
+新增：
+  src/app/nutrition/page.tsx                      — Nutrition Hub
+  src/app/nutrition/proteinmaxxing-guide/page.tsx  — Proteinmaxxing 指南
+  src/app/nutrition/how-much-protein-per-day/page.tsx — 每日蛋白质需求
+  src/app/nutrition/cheapest-protein-sources/page.tsx — 最便宜蛋白质源排行
+  src/app/gear/page.tsx                           — Gear Hub
+  src/app/gear/best-air-fryers/page.tsx           — 空气炸锅评测
+  src/app/gear/best-rice-cookers/page.tsx         — 电饭煲评测
+  src/app/gear/meal-prep-containers/page.tsx      — 容器评测
+  src/app/boy-kibble/original-recipe/page.tsx     — Boy Kibble 原版食谱
+  src/app/boy-kibble/variations/page.tsx          — Boy Kibble 10 种变体
+  src/app/tools/weekly-meal-generator/page.tsx    — 工具页壳
+  src/app/tools/weekly-meal-generator/generator.tsx — 生成器交互组件
+  src/components/hero-protein-ticker.tsx          — Hero 蛋白质轮播卡片
+
+修改：
+  src/app/page.tsx         — Hero 双列布局 + Ticker + Nutrition/Gear Live + 导航 + Footer
+  src/app/sitemap.ts       — 新增所有新页面 URL（184 总 URL）
+  src/app/boy-kibble/page.tsx — 新增子页面导航链接
+  src/app/globals.css      — 新增 gentle-float 动画
+  src/data/combos.ts       — Combo 矩阵从 46 扩展到 120
+```
+
 ---
 
 ## 下一步
 
-- [ ] Boy Kibble 子页面（original recipe、variations）
-- [ ] Nutrition Hub（/nutrition/：proteinmaxxing guide、cheapest sources、how much protein）
-- [ ] Gear 页（/gear/：air fryer、rice cooker、meal prep containers — Amazon affiliate）
-- [ ] Weekly Meal Generator 工具（SaaS 潜力）
-- [ ] Reddit 参与（r/MealPrepSunday、r/EatCheapAndHealthy）
+- [ ] Supplements 页（/supplements/：best creatine、best protein powder、best pre-workout — 高佣 affiliate 15-40%）
+- [ ] 继续扩展 Combo 矩阵（120 → 200+，添加 slow-cooker 和更多组合）
+- [ ] 页面视觉优化（减少长段文字，增加动效、图表、交互组件）
+- [ ] Reddit 参与（r/MealPrepSunday、r/EatCheapAndHealthy、r/gainit）
+- [ ] 数字产品（"$5/Day Bulk" Meal Plan PDF）
+- [ ] Weekly Generator 付费功能（保存计划、导出购物清单）
 
 ## 关键文件
 
