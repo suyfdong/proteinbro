@@ -16,6 +16,7 @@ import {
   Clock,
 } from "lucide-react";
 import NewsletterForm from "@/components/newsletter-form";
+import HeroProteinTicker from "@/components/hero-protein-ticker";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -78,51 +79,51 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/5 blur-[120px]" />
 
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-32">
-          <div className="fade-up max-w-3xl">
-            {/* Badge */}
-            <div className="fade-up-1 mb-6 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/5 px-4 py-1.5">
-              <TrendingUp className="h-3.5 w-3.5 text-green-400" />
-              <span className="text-xs font-semibold text-green-400">
-                Boy Kibble is trending — we have the macros
-              </span>
-            </div>
+          <div className="flex items-center gap-12">
+            <div className="fade-up min-w-0 flex-1">
+              {/* Badge */}
+              <div className="fade-up-1 mb-6 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/5 px-4 py-1.5">
+                <TrendingUp className="h-3.5 w-3.5 text-green-400" />
+                <span className="text-xs font-semibold text-green-400">
+                  Boy Kibble is trending — we have the macros
+                </span>
+              </div>
 
-            {/* Headline */}
-            <h1 className="fade-up-2 font-heading text-5xl leading-[0.95] font-black uppercase tracking-tight sm:text-7xl lg:text-8xl">
-              High Protein.
-              <br />
-              <span className="text-green-500">Low Effort.</span>
-              <br />
-              <span className="text-zinc-500">No Excuses.</span>
-            </h1>
+              {/* Headline */}
+              <h1 className="fade-up-2 font-heading text-5xl leading-[0.95] font-black uppercase tracking-tight sm:text-7xl lg:text-7xl">
+                High Protein.
+                <br />
+                <span className="text-green-500">Low Effort.</span>
+                <br />
+                <span className="text-zinc-500">No Excuses.</span>
+              </h1>
 
-            <p className="fade-up-3 mt-6 max-w-lg text-lg leading-relaxed text-zinc-400">
-              Macros-first recipes, free calculators, and meal plans built for
-              guys who lift. 40g+ protein per serving, under $3, ready in 20
-              minutes.
-            </p>
+              <p className="fade-up-3 mt-6 max-w-lg text-lg leading-relaxed text-zinc-400">
+                Macros-first recipes, free calculators, and meal plans built for
+                guys who lift. 40g+ protein per serving, under $3, ready in 20
+                minutes.
+              </p>
 
-            {/* CTA buttons */}
-            <div className="fade-up-4 mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/tools/ground-beef-macro-calculator"
-                className="glow-pulse inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-green-500 px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-zinc-950 transition-all hover:bg-green-400"
-              >
-                <Calculator className="h-4 w-4" />
-                Beef Macro Calculator
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="#boy-kibble"
-                className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border-2 border-zinc-700 px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-zinc-300 transition-all hover:border-zinc-500 hover:text-zinc-100"
-              >
-                What is Boy Kibble?
-              </Link>
-            </div>
-          </div>
+              {/* CTA buttons */}
+              <div className="fade-up-4 mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/tools/ground-beef-macro-calculator"
+                  className="glow-pulse inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-green-500 px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-zinc-950 transition-all hover:bg-green-400"
+                >
+                  <Calculator className="h-4 w-4" />
+                  Beef Macro Calculator
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="#boy-kibble"
+                  className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border-2 border-zinc-700 px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-zinc-300 transition-all hover:border-zinc-500 hover:text-zinc-100"
+                >
+                  What is Boy Kibble?
+                </Link>
+              </div>
 
-          {/* Hero stat pills */}
-          <div className="fade-up-5 mt-12 flex flex-wrap gap-3">
+              {/* Hero stat pills */}
+              <div className="fade-up-5 mt-10 flex flex-wrap gap-3">
             {[
               { icon: Target, label: "40g+ protein/serving", color: "text-green-400" },
               { icon: DollarSign, label: "Under $3/meal", color: "text-yellow-400" },
@@ -139,6 +140,13 @@ export default function Home() {
                 </span>
               </div>
             ))}
+              </div>
+            </div>
+
+            {/* Right: Protein Ticker */}
+            <div className="fade-up-6 hidden w-[380px] shrink-0 lg:block">
+              <HeroProteinTicker />
+            </div>
           </div>
         </div>
       </section>

@@ -56,6 +56,15 @@
 .fade-up-5 { animation-delay: 0.5s; }
 .fade-up-6 { animation-delay: 0.6s; }
 
+/* Gentle float for hero ticker */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.hero-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
 /* Hover lift */
 .hover-lift {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
