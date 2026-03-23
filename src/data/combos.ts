@@ -746,71 +746,145 @@ function generateTips(
 // ========== HIGH-PRIORITY COMBOS ==========
 // Curated list of high-search-volume combinations
 const COMBO_DEFINITIONS: [string, string, string][] = [
-  // Chicken breast combos (highest search volume)
+  // ========== Chicken Breast (highest search volume) ==========
   ["chicken-breast", "air-fryer", "rice"],
   ["chicken-breast", "air-fryer", "sweet-potato"],
   ["chicken-breast", "air-fryer", "broccoli"],
+  ["chicken-breast", "air-fryer", "potatoes"],
+  ["chicken-breast", "air-fryer", "quinoa"],
+  ["chicken-breast", "air-fryer", "mixed-veggies"],
   ["chicken-breast", "baked", "rice"],
   ["chicken-breast", "baked", "sweet-potato"],
+  ["chicken-breast", "baked", "broccoli"],
+  ["chicken-breast", "baked", "potatoes"],
+  ["chicken-breast", "baked", "quinoa"],
   ["chicken-breast", "grilled", "rice"],
+  ["chicken-breast", "grilled", "sweet-potato"],
+  ["chicken-breast", "grilled", "broccoli"],
+  ["chicken-breast", "grilled", "mixed-veggies"],
   ["chicken-breast", "cast-iron", "rice"],
+  ["chicken-breast", "cast-iron", "sweet-potato"],
+  ["chicken-breast", "cast-iron", "broccoli"],
   ["chicken-breast", "skillet", "rice"],
+  ["chicken-breast", "skillet", "sweet-potato"],
+  ["chicken-breast", "skillet", "pasta"],
   ["chicken-breast", "instant-pot", "rice"],
+  ["chicken-breast", "instant-pot", "potatoes"],
   ["chicken-breast", "sheet-pan", "mixed-veggies"],
+  ["chicken-breast", "sheet-pan", "sweet-potato"],
+  ["chicken-breast", "sheet-pan", "broccoli"],
+  ["chicken-breast", "slow-cooker", "rice"],
+  ["chicken-breast", "slow-cooker", "sweet-potato"],
 
-  // Chicken thighs
+  // ========== Chicken Thighs ==========
   ["chicken-thighs", "air-fryer", "rice"],
+  ["chicken-thighs", "air-fryer", "sweet-potato"],
+  ["chicken-thighs", "air-fryer", "broccoli"],
   ["chicken-thighs", "sheet-pan", "sweet-potato"],
   ["chicken-thighs", "sheet-pan", "potatoes"],
+  ["chicken-thighs", "sheet-pan", "mixed-veggies"],
   ["chicken-thighs", "baked", "rice"],
+  ["chicken-thighs", "baked", "sweet-potato"],
+  ["chicken-thighs", "baked", "potatoes"],
   ["chicken-thighs", "cast-iron", "rice"],
+  ["chicken-thighs", "cast-iron", "potatoes"],
+  ["chicken-thighs", "skillet", "rice"],
+  ["chicken-thighs", "skillet", "sweet-potato"],
+  ["chicken-thighs", "grilled", "rice"],
+  ["chicken-thighs", "grilled", "mixed-veggies"],
 
-  // Ground beef
+  // ========== Ground Beef ==========
   ["ground-beef", "skillet", "rice"],
+  ["ground-beef", "skillet", "sweet-potato"],
+  ["ground-beef", "skillet", "pasta"],
+  ["ground-beef", "skillet", "broccoli"],
   ["ground-beef", "cast-iron", "potatoes"],
   ["ground-beef", "cast-iron", "rice"],
+  ["ground-beef", "cast-iron", "sweet-potato"],
   ["ground-beef", "sheet-pan", "potatoes"],
+  ["ground-beef", "sheet-pan", "sweet-potato"],
+  ["ground-beef", "sheet-pan", "mixed-veggies"],
   ["ground-beef", "instant-pot", "rice"],
+  ["ground-beef", "instant-pot", "potatoes"],
 
-  // Ground turkey
+  // ========== Ground Turkey ==========
   ["ground-turkey", "skillet", "rice"],
   ["ground-turkey", "skillet", "sweet-potato"],
+  ["ground-turkey", "skillet", "pasta"],
+  ["ground-turkey", "skillet", "broccoli"],
   ["ground-turkey", "sheet-pan", "sweet-potato"],
+  ["ground-turkey", "sheet-pan", "mixed-veggies"],
   ["ground-turkey", "cast-iron", "rice"],
+  ["ground-turkey", "cast-iron", "sweet-potato"],
 
-  // Salmon
+  // ========== Salmon ==========
   ["salmon", "air-fryer", "rice"],
+  ["salmon", "air-fryer", "broccoli"],
+  ["salmon", "air-fryer", "quinoa"],
   ["salmon", "baked", "rice"],
   ["salmon", "baked", "broccoli"],
+  ["salmon", "baked", "sweet-potato"],
+  ["salmon", "baked", "quinoa"],
   ["salmon", "cast-iron", "rice"],
+  ["salmon", "cast-iron", "broccoli"],
+  ["salmon", "grilled", "rice"],
+  ["salmon", "grilled", "mixed-veggies"],
   ["salmon", "sheet-pan", "mixed-veggies"],
+  ["salmon", "sheet-pan", "broccoli"],
+  ["salmon", "sheet-pan", "sweet-potato"],
 
-  // Shrimp
+  // ========== Shrimp ==========
   ["shrimp", "air-fryer", "rice"],
+  ["shrimp", "air-fryer", "broccoli"],
+  ["shrimp", "air-fryer", "quinoa"],
   ["shrimp", "skillet", "rice"],
   ["shrimp", "skillet", "pasta"],
+  ["shrimp", "skillet", "broccoli"],
   ["shrimp", "grilled", "rice"],
+  ["shrimp", "grilled", "mixed-veggies"],
+  ["shrimp", "sheet-pan", "mixed-veggies"],
+  ["shrimp", "sheet-pan", "rice"],
 
-  // Pork chops
+  // ========== Pork Chops ==========
   ["pork-chops", "air-fryer", "rice"],
+  ["pork-chops", "air-fryer", "sweet-potato"],
+  ["pork-chops", "air-fryer", "broccoli"],
   ["pork-chops", "cast-iron", "rice"],
   ["pork-chops", "cast-iron", "potatoes"],
+  ["pork-chops", "cast-iron", "sweet-potato"],
   ["pork-chops", "grilled", "rice"],
+  ["pork-chops", "grilled", "mixed-veggies"],
   ["pork-chops", "baked", "sweet-potato"],
+  ["pork-chops", "baked", "rice"],
+  ["pork-chops", "baked", "potatoes"],
+  ["pork-chops", "skillet", "rice"],
+  ["pork-chops", "skillet", "sweet-potato"],
 
-  // Tilapia
+  // ========== Tilapia ==========
   ["tilapia", "air-fryer", "rice"],
+  ["tilapia", "air-fryer", "broccoli"],
+  ["tilapia", "air-fryer", "quinoa"],
   ["tilapia", "baked", "rice"],
+  ["tilapia", "baked", "broccoli"],
+  ["tilapia", "baked", "sweet-potato"],
   ["tilapia", "skillet", "rice"],
+  ["tilapia", "skillet", "broccoli"],
 
-  // Eggs
+  // ========== Eggs ==========
   ["eggs", "skillet", "rice"],
+  ["eggs", "skillet", "sweet-potato"],
   ["eggs", "baked", "sweet-potato"],
+  ["eggs", "baked", "mixed-veggies"],
 
-  // Tofu
+  // ========== Tofu ==========
   ["tofu", "air-fryer", "rice"],
+  ["tofu", "air-fryer", "broccoli"],
+  ["tofu", "air-fryer", "quinoa"],
   ["tofu", "skillet", "rice"],
+  ["tofu", "skillet", "broccoli"],
   ["tofu", "baked", "quinoa"],
+  ["tofu", "baked", "rice"],
+  ["tofu", "baked", "brown-rice"],
 ];
 
 export const COMBOS: Combo[] = COMBO_DEFINITIONS

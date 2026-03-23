@@ -222,23 +222,27 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Upcoming tool */}
-            <div
-              className="relative overflow-hidden rounded-2xl border-2 border-zinc-800 bg-zinc-900/50 p-6 opacity-70"
+            {/* Live tool 4 */}
+            <Link
+              href="/tools/weekly-meal-generator"
+              className="hover-lift group relative overflow-hidden rounded-2xl border-2 border-green-500/30 bg-gradient-to-b from-green-500/10 to-zinc-900 p-6"
             >
-              <div className="absolute top-3 right-3 rounded-full border border-zinc-700 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-500">
-                Soon
+              <div className="absolute top-3 right-3 rounded-full bg-green-500 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-950">
+                Live
               </div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10">
                 <CalendarDays className="h-6 w-6 text-purple-400" />
               </div>
-              <h3 className="mb-1 font-heading text-lg font-bold uppercase text-zinc-300">
+              <h3 className="mb-1 font-heading text-lg font-bold uppercase">
                 Weekly Kibble Generator
               </h3>
-              <p className="text-sm text-zinc-500">
+              <p className="text-sm text-zinc-400">
                 Auto-generate a 5-meal rotation based on your protein goals and budget.
               </p>
-            </div>
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-green-400 transition-colors group-hover:text-green-300">
+                Use now <ArrowRight className="h-3 w-3" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -454,6 +458,12 @@ export default function Home() {
                   className="transition-colors hover:text-zinc-300"
                 >
                   Meal Prep Cost
+                </Link>
+                <Link
+                  href="/tools/weekly-meal-generator"
+                  className="transition-colors hover:text-zinc-300"
+                >
+                  Weekly Generator
                 </Link>
               </div>
             </div>
